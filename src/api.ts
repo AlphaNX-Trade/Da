@@ -110,4 +110,8 @@ export const api = {
   getParticipationExportUrl(): string {
     return `${API_BASE}/export/participation`;
   },
+
+  getAppZipUrl(): string {
+    return `${API_BASE}/download-zip`;
+  },
 };

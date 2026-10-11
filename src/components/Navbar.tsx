@@ -107,8 +107,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={onOpenExport}
               className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg shadow-xs transition-colors cursor-pointer"
             >
-              <Download className="w-4 h-4 text-gray-600" />
-              <span>Export CSV</span>
+              <Download className="w-4 h-4 text-blue-600" />
+              <span>Export &amp; ZIP</span>
             </button>
 
             <button
@@ -192,8 +192,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => { setMobileMenuOpen(false); onOpenExport(); }}
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg"
               >
-                <Download className="w-3.5 h-3.5" />
-                <span>Export CSV</span>
+                <Download className="w-3.5 h-3.5 text-blue-600" />
+                <span>Export &amp; ZIP</span>
               </button>
               <button
                 onClick={() => { setMobileMenuOpen(false); onOpenCloudflare(); }}

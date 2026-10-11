@@ -3,6 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import { execSync } from 'child_process';
 import { createServer as createViteServer } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -464,6 +465,32 @@ app.get('/api/export/participation', (req, res) => {
     res.send(csv);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+// App ZIP Download: Packages current source code, database, and configurations
+app.get('/api/download-zip', (req, res) => {
+  try {
+    const scriptPath = path.join(__dirname, 'scripts', 'package-zip.py');
+    const zipPath = path.join(__dirname, 'dasara-zone-app.zip');
+
+    // Run packaging script to ensure latest files are bundled
+    execSync(`python3 "${scriptPath}"`, { stdio: 'pipe' });
+
+    if (!fs.existsSync(zipPath)) {
+      throw new Error('ZIP file could not be generated.');
+    }
+
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', 'attachment; filename="dasara-zone-app.zip"');
+    res.download(zipPath, 'dasara-zone-app.zip', (err) => {
+      if (err) {
+        console.error('[Dasara Zone] Error streaming ZIP download:', err);
+      }
+    });
+  } catch (err: any) {
+    console.error('[Dasara Zone] ZIP creation failed:', err);
+    res.status(500).json({ error: 'Failed to create application ZIP: ' + err.message });
   }
 });
 
