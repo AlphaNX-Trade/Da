@@ -7,6 +7,6 @@ pages_build_output_dir = "dist"
 # Bind your D1 database by replacing database_name and database_id with your Cloudflare D1 details
 [[d1_databases]]
 binding = "DB"
-database_name = "dasara_zone_db"
-database_id = "YOUR_D1_DATABASE_ID"
+database_name = "dasara11"
+database_id = "bc8ce017-6ae5-4944-b14c-d320bff95245"
 migrations_dir = "migrations"
