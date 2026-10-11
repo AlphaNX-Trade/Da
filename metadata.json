@@ -1,0 +1,6 @@
+{
+  "name": "Dasara Zone",
+  "description": "A Simple Games Participation Management Website developed by Alpha. Easily manage games, participants, and participation checkbox matrix with real database storage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
